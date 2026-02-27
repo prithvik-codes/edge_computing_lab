@@ -1,0 +1,32 @@
+Title: IoT-Based Temperature and Humidity Monitoring using
+Raspberry Pi 5 and Blynk Cloud
+
+Objective
+To interface a DHT11 sensor with a Raspberry Pi 5 and transmit real-time
+environmental data to the Blynk IoT Cloud for remote visualization on a web and mobile
+dashboard.
+Background
+In advanced IoT ecosystems, data processed at the edge (Raspberry Pi) is often pushed
+to the cloud for long-term storage and remote monitoring.
+• Blynk IoT: A platform that allows developers to create custom dashboards using
+"Virtual Pins" to represent physical sensor data.
+• RP1 Architecture: The Pi 5's dedicated I/O controller requires libgpiod to
+manage sensor timing, which is critical for the DHT11's proprietary one-wire
+protocol.
+
+Materials Required
+• Raspberry Pi 5 (with Internet Connection)
+• DHT11 Temperature and Humidity Sensor
+• Jumper Wires (Female-to-Female)
+• 4.7kΩ - 10kΩ Resistor (if using a raw sensor)
+• Blynk IoT Account (Cloud Console)
+
+Circuit Diagram & Wiring
+CRITICAL: Ensure the sensor is powered via the 3.3V pin. The Raspberry Pi 5 GPIO pins
+are not 5V tolerant; using the 5V rail for data signaling will cause permanent damage to
+the RP1 chip.
+
+Sensor Pin Function Raspberry Pi 5 Pin Physical Pin #
+VCC (+) Power 3.3V Pin 1
+GND (-) Ground Ground Pin 6
+DATA (Out) Signal GPIO 4 Pin 7
