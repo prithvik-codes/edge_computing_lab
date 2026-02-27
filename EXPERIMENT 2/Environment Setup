@@ -1,0 +1,11 @@
+On the Pi 5 (OS Bookworm), we must use a virtual environment to manage
+dependencies reliably.
+
+Bash
+1. Create a project folder
+mkdir blynk_dht11 && cd blynk_dht11
+2. Create and activate virtual environment
+python3 -m venv --system-site-packages venv
+source venv/bin/activate
+3. Install necessary libraries
+pip install blynk-library-python adafruit-circuitpython-dht
