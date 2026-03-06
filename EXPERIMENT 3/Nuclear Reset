@@ -1,0 +1,27 @@
+Step 1: Nuclear Reset 
+Before we start fresh, we must kill any "zombie" containers, networks, or old files that are  causing the Conflict errors. 
+
+Bash 
+# Stop and remove all containers 
+docker stop data-logger sensor-sim 2>/dev/null 
+docker rm data-logger sensor-sim 2>/dev/null
+
+
+
+# Remove the network 
+docker network rm sensor-net 2>/dev/null
+
+
+
+# Clear folder in our Main EC Labs Folder to start fresh 
+mkdir Expt3 
+
+Step 2: Prepare the Correct Files 
+Use nano or your preferred editor to ensure the files contain exactly this code. I have added  the encoding fix and the unbuffered logging flag. 
+File 1: requirements.txt 
+Plaintext 
+fastapi 
+uvicorn 
+pydantic 
+requests
+
