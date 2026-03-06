@@ -1,0 +1,43 @@
+Step 4: Build and Execute (The "Accurate Way") 
+1. Create the Bridge Network: 
+docker network create sensor-net
+
+
+
+2. Build the Images: 
+docker build -f Dockerfile.logger -t data-logger . 
+docker build -f Dockerfile.simulator -t sensor-sim .
+
+
+
+3. Run Service A (Data Logger):
+docker run -d \ 
+ --name data-logger \ 
+ --network sensor-net \ 
+ -v $(pwd)/data:/data \ 
+ data-logger
+
+
+
+4. Run Service B (Sensor Simulator): 
+docker run -d \ 
+ --name sensor-sim \ 
+ --network sensor-net \ 
+ -e SERVICE_A_URL=http://data-logger:8000/log \ 
+ sensor-sim
+
+
+
+Step 5: Verify the Output 
+Since we added PYTHONUNBUFFERED=1, the logs will no longer be blank. Check the Simulator's activity: 
+docker logs -f sensor-sim
+
+
+
+You should see: Sent temp 25.43C: Status 200  
+Check the saved data on your Raspberry Pi: 
+cat data/log.txt
+
+
+
+You should see: Temperature: 25.43C: at [Date/Time] 
