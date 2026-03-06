@@ -1,0 +1,7 @@
+Dockerfile 
+FROM python:3.11-slim 
+WORKDIR /app 
+COPY stress_test.py . 
+# Disable buffering so we see the "Payload Active" message immediately 
+ENV PYTHONUNBUFFERED=1 
+CMD ["python", "stress_test.py"]
